@@ -5,6 +5,8 @@
 #ifndef CODE_TERRAIN_H
 #define CODE_TERRAIN_H
 
+#include <stdbool.h>
+
 //  taille du terrain
 #define NB_LIGNES 10
 #define NB_COLONNES 10
@@ -33,7 +35,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @param sortie_colonne l'adresse ou deposer une colonne de sortie aleatoire
  */
 //  Ecrire le prototype de la fonction 'terrain_generer_position_sortie' ici
-
+void terrain_generer_position_sortie(int *sortie_ligne, int *sortie_colonne);
 /**
  * @brief Propose une position de depart aleatoire pour un terrain de dimensions NB_LIGNES x NB_COLONNES
  * @name terrain_generer_position_depart
@@ -44,6 +46,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @note la distance Manahttan entre la position de depart et la position de sortie doit etre plus grande que 10.
  */
 //  Ecrire le prototype de la fonction 'terrain_generer_position_depart' ici
+void terrain_generer_position_depart(int destination_ligne, int destination_colonne, int *depart_ligne, int *depart_colonne);
 
 /**
  * @brief Verifie qu'une position se trouve bien dans les limites du terrain de NB_LIGNES x NB_COLONNES
@@ -53,6 +56,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @return true si la position se trouve a l'interieur du terrain, false sinon
  */
 //  Ecrire le prototype de la fonction 'terrain_contient' ici
+bool terrain_contient(int position_ligne, int position_colonne);
 
 /**
  * @brief Retourne la quantite de carburant qui se trouve sur une case donnee du terrain
@@ -63,6 +67,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @return la quantite de carburant presente a cette position
  */
 //  Ecrire le prototype de la fonction 'terrain_get_carburant' ici
+int terrain_get_carburant(t_terrain terrain, int position_ligne, int position_colonne);
 
 /**
  * @brief Initialise la quantite de carburant sur une case du terrain
@@ -73,6 +78,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @param carburant le carburant qui se trouvera dans la case
  */
 //  Ecrire le prototype de la fonction 'terrain_set_carburant' ici
+void terrain_set_carburant(t_terrain terrain, int position_ligne, int position_colonne, int carburant);
 
 /**
  * @brief Initialise toutes les cases d'un terrain a 0 (zero)
@@ -80,6 +86,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @param terrain le terrain dont on veut initialiser les cases
  */
 //  Ecrire le prototype de la fonction 'terrain_init' ici
+void terrain_init(t_terrain terrain);
 
 /**
  * @brief Cree aleatoirement les stations de gas sur le terrain. La quantite_globale des quantites de gas des stations est passee en parametre.
@@ -88,6 +95,7 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @param quantite_globale la quantite globale de carburant a allouer sur l'ensemble des stations
  */
 //  Ecrire le prototype de la fonction 'terrain_creer_stations_carburant' ici
+void terrain_creer_stations_carburant(t_terrain terrain, int quantite_globale);
 
 /**
  * @brief Affiche la quantite de gas pour toutes les cases d'un terrain.
@@ -99,5 +107,6 @@ typedef int t_terrain[NB_LIGNES][NB_COLONNES];
  * @param destination_colonne la ligne de la position de la case de destination
  */
 //  Ecrire le prototype de la fonction 'terrain_afficher' ici
+void terrain_afficher(t_terrain terrain, int courante_ligne, int courante_colonne, int destination_ligne, int destination_colonne);
 
 #endif //CODE_TERRAIN_H
